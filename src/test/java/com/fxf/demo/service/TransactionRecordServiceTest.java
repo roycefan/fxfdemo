@@ -118,7 +118,7 @@ public class TransactionRecordServiceTest {
     }
 
     @Test
-    public void submitTransaction() {
+    public void testSubmitTransaction() {
 
         List<TransactionRecord> testRecords = generateTestData();
         for (TransactionRecord testRecord : testRecords) {
