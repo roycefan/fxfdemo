@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxf.demo.dao.TransactionRecordDao">
+    <resultMap id="transactionRecordMap" type="com.fxf.demo.dao.entities.TransactionRecordEntity">
+        <id column="transactionId" property="transactionId"/>
+
+        <result column="tradeId" property="tradeId"/>
+        <result column="version" property="version"/>
+        <result column="securityCode" property="securityCode"/>
+        <result column="quantity" property="quantity"/>
+        <result column="action" property="action"/>
+        <result column="transactionType" property="transactionType"/>
+        <result column="lastModifyTime" property="lastModifyTime"/>
+
+    </resultMap>
+
+    <select id="list" resultMap="transactionRecordMap">
+        select *
+        from `transactionRecord`
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="entity.transactionId">
+        insert into
+        transactionrecord
+        (
+        `TradeId`,
+        `Version`,
+        `SecurityCode`,
+        `Quantity`,
+        `Action`,
+        `TransactionType`
+        )
+        values
+        (
+        #{entity.tradeId},
+        #{entity.version},
+        #{entity.securityCode},
+        #{entity.quantity},
+        #{entity.action},
+        #{entity.transactionType}
+        )
+    </insert>
+
+    <update id="update">
+        update
+        `transactionrecord`
+        <set>
+            `TradeId` = #{entity.tradeId},
+            `Version` = #{entity.version},
+            `SecurityCode` = #{entity.securityCode},
+            `Quantity` = #{entity.quantity},
+            `Action` = #{entity.action},
+            `TransactionType` = #{entity.transactionType}
+        </set>
+        <where>
+            `id` = #{entity.id}
+        </where>
+    </update>
+
+    <delete id="delete">
+      delete from transactionRecord where transactionId = #{transactionId}
+    </delete>
+
+    <select id="find" resultMap="transactionRecordMap">
+        select * from transactionRecord where tradeId = #{tradeId} order by  transactionId
+        desc limit 1
+    </select>
+
+    <select id="findMaxTradeId"  resultType="java.lang.Integer">
+      select  max(tradeId) from transactionrecord
+    </select>
+
+</mapper>
+
+

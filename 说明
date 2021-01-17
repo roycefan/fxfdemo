@@ -1,0 +1,6 @@
+我理解，tradeid 应该是交易id ,不是交易员id, 否则insert  的时候tradeid 是可以重复，那执行cancel 的时候怎么执行呢， 和需求中数据是冲突的。
+
+cancel 是对当前tradeid 的交易记录进行撤销
+update 如果股票代码不一样，  是撤销当前tradeid对应的交易，创建一个新的insert 记录
+
+头寸不知道是否允许负数的存在

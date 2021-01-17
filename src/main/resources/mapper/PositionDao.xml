@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxf.demo.dao.PositionDao">
+    <resultMap id="positionMap" type="com.fxf.demo.dao.entities.PositionEntity">
+        <id column="Id" property="id"/>
+        <result column="securityCode" property="securityCode"/>
+        <result column="quantity" property="quantity"/>
+        <result column="lastModifyTime" property="lastModifyTime"/>
+    </resultMap>
+
+    <select id="list" resultMap="positionMap">
+        select *
+        from `position`
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="entity.id">
+        insert into `position`
+        (securityCode,
+         quantity)
+        values (#{entity.securityCode},
+                #{entity.quantity}) ON DUPLICATE KEY
+        UPDATE
+            securityCode=
+        values (securityCode)
+
+    </insert>
+
+    <update id="update">
+        update
+        `position`
+        <set>
+            quantity= #{entity.quantity}
+        </set>
+        <where>
+            securityCode = #{entity.securityCode}
+        </where>
+    </update>
+
+
+    <delete id="delete">
+        delete
+        from  `position`
+        where Id = #{id}
+    </delete>
+
+
+    <select id="findBySecurityCode"  resultMap="positionMap">
+        select * from `position` where securityCode = #{securityCode}
+    </select>
+</mapper>
