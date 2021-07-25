@@ -3,13 +3,22 @@
 
 <html>
 <head>
+
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <link href="css/admin.css" rel="stylesheet" type="text/css"/>
 
     <!-- js -->
+    <
     <script src="js/moment-with-locales.min.js"></script>
     <script src="js/vue.min.js"></script>
+    -
     <script src="js/antd-with-locales.min.js"></script>
+
+
+    <script src="https://unpkg.com/element-ui@2.15.3/lib/index.js"></script>
+
+    <link href="https://unpkg.com/element-ui@2.15.3/lib/theme-chalk/index.css" rel="stylesheet" type="text/css"/>
+
 
     <title></title>
 </head>
@@ -19,7 +28,7 @@
 
     <a-layout id="components-layout-demo-top" class="layout">
         <a-layout-header style="background:#565656">
-         <div>demo</div>
+            <div>demo</div>
         </a-layout-header>
         <a-layout-content style="padding: 0px">
             <div class="main" style="background:white">
@@ -34,17 +43,16 @@
 </div>
 
 
-
 <script type="text/x-template" id="transactionrecord">
-    <div  style="height: 300px">
-      record
+    <div style="height: 300px">
+        record
     </div>
 
 </script>
 
 
 <script type="text/x-template" id="positon">
-    <div  style="height: 300px">
+    <div style="height: 300px">
         postion
     </div>
 
@@ -56,9 +64,7 @@
     var transactionrecord = {
         template: '#transactionrecord',
         data: function () {
-            return {
-
-            };
+            return {};
 
         },
 
@@ -66,28 +72,21 @@
 
 
         },
-        methods: {
-
-        }
+        methods: {}
     };
 
 
     var positon = {
         template: '#positon',
         data: function () {
-            return {
-            };
+            return {};
         },
 
         mounted: async function () {
 
         },
-        methods: {
-
-        }
+        methods: {}
     };
-
-
 
 
     var app = new Vue({
